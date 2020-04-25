@@ -1,2 +1,2 @@
-# personal_code
+# Personal Code
 Repository of William's personal code
