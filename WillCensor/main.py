@@ -14,6 +14,9 @@ It's been four days now we've been trapped in here. I have no idea if anyone els
 
 Francine 
 """
+
+Text = input("Give me some text to censor: ")
+
 with open('swear_words.txt', 'r') as f:
     profanity_list = f.readlines()
 
@@ -33,7 +36,8 @@ def censor(word):
     else:            
         text = word
     return text
-tokenized = tokenize(email)
+
+tokenized = tokenize(Text)
 
 words = []
 
