@@ -1,4 +1,5 @@
 import nltk
+nltk.download('punkt')
 
 email = """SEND HELP!
 
@@ -12,15 +13,17 @@ It's been four days now we've been trapped in here. I have no idea if anyone els
 
 Francine 
 """
+
+User_Text = input("Enter text: ") 
+
 with open('swear_words.txt', 'r') as f:
     profanity_list = f.readlines()
 
 new_profanity_list = set(line.strip() for line in open('expanded_swear_words.txt'))
 
 def tokenize(text):    
-    lower_text = text.lower()
-    tokenized_text = nltk.word_tokenize(lower_text)
-    completed_text = [word for word in tokenized_text if word.isalnum()]
+    tokenized_text = nltk.word_tokenize(text)
+    completed_text = [word for word in tokenized_text]
     return completed_text
 
 def censor(word):
@@ -28,7 +31,17 @@ def censor(word):
         length = len(str(word))
         censor = length * "X"
         text = word.replace(word, censor) 
-        return text	
+    else:            
+        text = word
+    return text
 
-censored_email = [censor(item) for item in email]
-print(str(censored_email))
+tokenized = tokenize(User_Text)
+
+words = []
+
+for word in tokenized:
+    words.append(censor(word))
+
+print(" ".join(words))
+
+
