@@ -1,6 +1,7 @@
 import nltk
 nltk.download('punkt')
 
+# Test Text
 email = """SEND HELP!
 
 God Damn, Helena has sealed the entrances and exits to the lab. I don't know when she got access to the buildings mainframe but she has it and she won't let any of research team out. I'm cut off from the rest of the team here in my office. Helena has locked the doors, but I've managed to destroy the camera so she can't see me in here. I don't think this email will even get out.
@@ -14,7 +15,7 @@ It's been four days now we've been trapped in here. I have no idea if anyone els
 Francine 
 """
 
-User_Text = input("Enter text: ") 
+Text = input("Give me some text to censor: ")
 
 with open('swear_words.txt', 'r') as f:
     profanity_list = f.readlines()
@@ -35,7 +36,7 @@ def censor(word):
         text = word
     return text
 
-tokenized = tokenize(User_Text)
+tokenized = tokenize(Text)
 
 words = []
 
@@ -43,5 +44,3 @@ for word in tokenized:
     words.append(censor(word))
 
 print(" ".join(words))
-
-
